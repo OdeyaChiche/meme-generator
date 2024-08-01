@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+}
+
+.canvas-container {
+  padding: 20px;
+  width: 500px;
+  border: 1px solid #636365;
+  margin: auto;
+  background-color: #29278f;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #000;
+  }
+
