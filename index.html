@@ -8,19 +8,24 @@
   </head>
 
   <body onload="onInit()">
-    <h2>Meme Generator</h2>
+    <h1>Meme Generator</h1>
+
+    <section class="gallery">
+      <h2>Select an image</h2>
+
+      <div class="img-container">
+        <img src="img/meme-imgs (square)/1.jpg" onclick="onSelectImg(this)" />
+        <img src="img/meme-imgs (square)/2.jpg" onclick="onSelectImg(this)" />
+      </div>
+    </section>
 
     <div class="canvas-container">
       <canvas width="450" height="450"> </canvas>
     </div>
 
-    <section class="gallery">
+    <section class="meme-editor"></section>
 
-    </section>
-
-    <section class="meme-editor">
-
-    </section>
+    <a href="#" onclick="downloadMeme(this)" download>Download</a>
 
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
