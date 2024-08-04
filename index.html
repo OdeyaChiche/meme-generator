@@ -14,16 +14,18 @@
       <h2>Select an image</h2>
 
       <div class="img-container">
-        <img src="img/meme-imgs (square)/1.jpg" onclick="onSelectImg(this)" />
-        <img src="img/meme-imgs (square)/2.jpg" onclick="onSelectImg(this)" />
+    
       </div>
     </section>
 
-    <div class="canvas-container">
-      <canvas width="450" height="450"> </canvas>
+    <div class="canvas-container hidden" >
+      <canvas width="400" height="400" > </canvas>
     </div>
 
-    <section class="meme-editor"></section>
+    <section class="meme-editor">
+            <input oninput="onSetLine(this.value)" class= "line-text" type="text" placeholder="Add Text Here">
+    
+    </section>
 
     <a href="#" onclick="downloadMeme(this)" download>Download</a>
 
