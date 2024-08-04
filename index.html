@@ -13,18 +13,25 @@
     <section class="gallery">
       <h2>Select an image</h2>
 
-      <div class="img-container">
-    
-      </div>
+      <div class="img-container"></div>
     </section>
 
-    <div class="canvas-container hidden" >
-      <canvas width="400" height="400" > </canvas>
+    <div class="canvas-container hidden">
+      <canvas width="400" height="400"> </canvas>
     </div>
 
     <section class="meme-editor">
-            <input oninput="onSetLine(this.value)" class= "line-text" type="text" placeholder="Add Text Here">
-    
+      <label for="text">Add text</label>
+      <input
+        id="text"
+        oninput="onSetLine(this.value)"
+        class="line-text"
+        type="text"
+        placeholder="Add Text Here"
+      />
+
+      <label for="txtColor">Set text color</label>
+      <input type="color" id="txtColor" class="text-color" onchange="onChangeColor(this.value)"/>
     </section>
 
     <a href="#" onclick="downloadMeme(this)" download>Download</a>

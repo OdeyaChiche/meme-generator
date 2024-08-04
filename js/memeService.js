@@ -10,7 +10,7 @@ let gMeme = {
   lines: [
     {
       txt: 'Add Text Here',
-      size: 20,
+      size: 50,
       color: 'red',
     },
   ],
@@ -21,29 +21,34 @@ function getMeme() {
   return gMeme
 }
 
-function setImg(imgId){
-
-  let elGallery = document.querySelector('.gallery')  
+function setImg(imgId) {
+  let elGallery = document.querySelector('.gallery')
   gMeme.selectedImgId = imgId
-  
+
   renderMeme()
   elGallery.classList.add('hidden')
 }
 
-function setLineTxt(txt){
+function setLineTxt(txt) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = txt
+  console.log(gMeme.lines[gMeme.selectedLineIdx].txt)
 
-    gMeme.lines[gMeme.selectedLineIdx].txt=txt
-    console.log(gMeme.lines[gMeme.selectedLineIdx].txt);
-
-    renderMeme()
+  renderMeme()
 }
 
-function drawText(text, x,y){
-    gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'white'
-    gCtx.fillStyle = 'black'
-    gCtx.font = '35px Arial'
+function drawText(text, x, y) {
+let size= gMeme.lines[gMeme.selectedLineIdx].size
 
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+  gCtx.lineWidth = 1
+  gCtx.fillStyle = gMeme.lines[gMeme.selectedLineIdx].color
+  gCtx.font = `${size}px Arial`
+
+  gCtx.fillText(text, x, y)
+  gCtx.strokeText(text, x, y)
+}
+
+function changeTextColor(value) {
+  gMeme.lines[gMeme.selectedLineIdx].color = value
+
+  renderMeme()
 }

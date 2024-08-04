@@ -55,9 +55,13 @@ function onSetLine(txt) {
   setLineTxt(txt)
 }
 
-function downloadMeme(elLink){
-const dataUrl= gElCanvas.toDataURL()
-elLink.href=dataUrl
+function downloadMeme(elLink) {
+  const dataUrl = gElCanvas.toDataURL()
+  elLink.href = dataUrl
 
-elLink.download= 'my-meme'
+  elLink.download = 'my-meme'
+}
+
+function onChangeColor(value) {
+  changeTextColor(value)
 }
