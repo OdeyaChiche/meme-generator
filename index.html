@@ -31,7 +31,15 @@
       />
 
       <label for="txtColor">Set text color</label>
-      <input type="color" id="txtColor" class="text-color" onchange="onChangeColor(this.value)"/>
+      <input
+        type="color"
+        id="txtColor"
+        class="text-color"
+        onchange="onChangeColor(this.value)"
+      />
+
+      <button onclick="increaseFont()">A +</button>
+      <button onclick="decreaseFont()">A -</button>
     </section>
 
     <a href="#" onclick="downloadMeme(this)" download>Download</a>

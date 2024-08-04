@@ -65,3 +65,15 @@ function downloadMeme(elLink) {
 function onChangeColor(value) {
   changeTextColor(value)
 }
+
+function increaseFont(){
+  gMeme.lines[gMeme.selectedLineIdx].size+=5
+
+    renderMeme()
+}
+
+function decreaseFont(){
+    gMeme.lines[gMeme.selectedLineIdx].size-=5
+  
+      renderMeme()
+  }
