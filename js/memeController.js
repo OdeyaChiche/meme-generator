@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+let gStartY = 50
 
 function onInit() {
   gElCanvas = document.querySelector('canvas')
@@ -17,15 +18,15 @@ function renderMeme() {
   const { selectedImgId, lines } = getMeme()
   //   const { txt } = lines
 
-  const txt = gMeme.lines[gMeme.selectedLineIdx].txt
-
   let selectedImg = gImgs.find((img) => img.id === selectedImgId)
 
   const elImg = new Image()
   elImg.src = selectedImg.url
 
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-  drawText(txt, 10, 50)
+
+  renderTextLines()
+  drawFrame()
 }
 
 function renderGallery() {
@@ -47,6 +48,14 @@ function renderGallery() {
   elGallery.innerHTML = strHtml
 }
 
+function renderTextLines() {
+  for (let i = 0; i < gMeme.lines.length; i++) {
+    let txt = gMeme.lines[i].txt
+    drawText(txt, gMeme.lines[i].startX, i)
+  }
+  //   drawFrame(txt, startX, startY)
+}
+
 function onImgSelect(imgId) {
   setImg(imgId)
 }
@@ -66,14 +75,50 @@ function onChangeColor(value) {
   changeTextColor(value)
 }
 
-function increaseFont(){
-  gMeme.lines[gMeme.selectedLineIdx].size+=5
+function increaseFont() {
+  gMeme.lines[gMeme.selectedLineIdx].size += 5
 
-    renderMeme()
+  renderMeme()
 }
 
-function decreaseFont(){
-    gMeme.lines[gMeme.selectedLineIdx].size-=5
-  
-      renderMeme()
-  }
+function decreaseFont() {
+  gMeme.lines[gMeme.selectedLineIdx].size -= 5
+
+  renderMeme()
+}
+
+function addLine() {
+  clearFrame()
+
+  gMeme.lines.push({
+    txt: 'Add Text Here',
+    size: 30,
+    color: 'black',
+    startY: gStartY + 50,
+    startX: 20,
+  })
+
+  gMeme.selectedLineIdx++
+  renderMeme()
+  renderTextLines()
+
+  gStartY += 50
+
+  const elText = document.querySelector('.line-text')
+  elText.value = ''
+}
+
+function switchLine() {
+  if (gMeme.selectedLineIdx === gMeme.lines.length - 1)
+    gMeme.selectedLineIdx = 0
+  else gMeme.selectedLineIdx++
+
+  renderMeme()
+  renderTextLines()
+
+  const elText = document.querySelector('.line-text')
+
+  if (gMeme.lines[gMeme.selectedLineIdx].txt === 'Add Text Here')
+    elText.value = ''
+  else elText.value = gMeme.lines[gMeme.selectedLineIdx].txt
+}

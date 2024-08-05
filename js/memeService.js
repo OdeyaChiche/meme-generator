@@ -10,8 +10,10 @@ let gMeme = {
   lines: [
     {
       txt: 'Add Text Here',
-      size: 50,
-      color: 'red',
+      size: 30,
+      color: 'black',
+      startY: 50,
+      startX: 20,
     },
   ],
 }
@@ -31,16 +33,16 @@ function setImg(imgId) {
 
 function setLineTxt(txt) {
   gMeme.lines[gMeme.selectedLineIdx].txt = txt
-  console.log(gMeme.lines[gMeme.selectedLineIdx].txt)
 
   renderMeme()
 }
 
-function drawText(text, x, y) {
-let size= gMeme.lines[gMeme.selectedLineIdx].size
+function drawText(text, x, i) {
+  let size = gMeme.lines[i].size
+  let y = gMeme.lines[i].startY
 
   gCtx.lineWidth = 1
-  gCtx.fillStyle = gMeme.lines[gMeme.selectedLineIdx].color
+  gCtx.fillStyle = gMeme.lines[i].color
   gCtx.font = `${size}px Arial`
 
   gCtx.fillText(text, x, y)
@@ -50,5 +52,31 @@ let size= gMeme.lines[gMeme.selectedLineIdx].size
 function changeTextColor(value) {
   gMeme.lines[gMeme.selectedLineIdx].color = value
 
+  console.log(gMeme.lines)
+
   renderMeme()
+}
+
+function drawFrame() {
+  let x = gMeme.lines[gMeme.selectedLineIdx].startX
+  let y = gMeme.lines[gMeme.selectedLineIdx].startY
+
+  let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+  let txtWidth = txtMeasure.width
+  let txtHeight = gMeme.lines[gMeme.selectedLineIdx].size
+
+  gCtx.strokeStyle = 'black'
+  gCtx.lineWidth = 4
+  gCtx.strokeRect(x - 5, y - txtHeight , txtWidth + 10, txtHeight + 10)
+}
+
+function clearFrame(){
+    let x = gMeme.lines[gMeme.selectedLineIdx].startX
+    let y = gMeme.lines[gMeme.selectedLineIdx].startY
+  
+    let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+    let txtWidth = txtMeasure.width
+    let txtHeight = gMeme.lines[gMeme.selectedLineIdx].size
+    
+    gCtx.clearRect(x - 5, y - txtHeight , txtWidth + 10, txtHeight + 10)
 }
