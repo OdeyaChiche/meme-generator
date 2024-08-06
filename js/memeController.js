@@ -16,7 +16,7 @@ function renderMeme() {
   elCanvasContainer.classList.remove('hidden')
 
   const { selectedImgId, lines } = getMeme()
-  //   const { txt } = lines
+  //   const { txt } = lines[0]
 
   let selectedImg = gImgs.find((img) => img.id === selectedImgId)
 
@@ -121,4 +121,29 @@ function switchLine() {
   if (gMeme.lines[gMeme.selectedLineIdx].txt === 'Add Text Here')
     elText.value = ''
   else elText.value = gMeme.lines[gMeme.selectedLineIdx].txt
+}
+
+function onMouseClick(ev) {
+  const { offsetX, offsetY } = ev
+
+  const clickedLineIdx = gMeme.lines.findIndex((line) => {
+    let txtMeasure = gCtx.measureText(line.txt)
+    let lineWidth = txtMeasure.width
+
+    return (
+      offsetX >= line.startX &&
+      offsetX <= line.startX + lineWidth &&
+      offsetY <= line.startY &&
+      offsetY >= line.startY - line.size
+    )
+  })
+
+  if (clickedLineIdx === -1) return
+
+  clearFrame()
+
+  gMeme.selectedLineIdx = clickedLineIdx
+  renderMeme()
+
+  console.log(clickedLineIdx)
 }
