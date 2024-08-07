@@ -19,7 +19,6 @@ let gImgs = [
   { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['cute', 'dog'] },
   { id: 17, url: 'img/meme-imgs (square)/17.jpg', keywords: ['cute', 'dog'] },
   { id: 18, url: 'img/meme-imgs (square)/18.jpg', keywords: ['cute', 'dog'] },
-
 ]
 let gMeme = {
   selectedImgId: 2,
@@ -28,6 +27,7 @@ let gMeme = {
     {
       txt: 'Add Text Here',
       size: 30,
+      font: 'Arial',
       color: 'black',
       startY: 50,
       startX: 20,
@@ -42,14 +42,14 @@ function getMeme() {
 
 function setImg(imgId) {
   let elGallery = document.querySelector('.gallery')
-  let elKeywordSearch= document.querySelector('.search-keyword')
+  let elKeywordSearch = document.querySelector('.search-keyword')
   gMeme.selectedImgId = imgId
 
   renderMeme()
   elGallery.classList.add('hidden')
   elKeywordSearch.classList.add('hidden')
 
-  console.log(elKeywordSearch);
+  console.log(elKeywordSearch)
 }
 
 function setLineTxt(txt) {
@@ -58,13 +58,14 @@ function setLineTxt(txt) {
   renderMeme()
 }
 
-function drawText(text, x, i) {
+function drawText(text, i) {
   let size = gMeme.lines[i].size
   let y = gMeme.lines[i].startY
+  let x = gMeme.lines[i].startX
 
   gCtx.lineWidth = 1
   gCtx.fillStyle = gMeme.lines[i].color
-  gCtx.font = `${size}px Arial`
+  gCtx.font = `${size}px ${gMeme.lines[i].font}`
 
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
@@ -72,8 +73,6 @@ function drawText(text, x, i) {
 
 function changeTextColor(value) {
   gMeme.lines[gMeme.selectedLineIdx].color = value
-
-  console.log(gMeme.lines)
 
   renderMeme()
 }
@@ -88,16 +87,24 @@ function drawFrame() {
 
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 4
-  gCtx.strokeRect(x - 5, y - txtHeight , txtWidth + 10, txtHeight + 10)
+  gCtx.strokeRect(x - 5, y - txtHeight, txtWidth + 10, txtHeight + 10)
 }
 
-function clearFrame(){
-    let x = gMeme.lines[gMeme.selectedLineIdx].startX
-    let y = gMeme.lines[gMeme.selectedLineIdx].startY
-  
-    let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-    let txtWidth = txtMeasure.width
-    let txtHeight = gMeme.lines[gMeme.selectedLineIdx].size
-    
-    gCtx.clearRect(x - 5, y - txtHeight , txtWidth + 10, txtHeight + 10)
+function clearFrame() {
+  let x = gMeme.lines[gMeme.selectedLineIdx].startX
+  let y = gMeme.lines[gMeme.selectedLineIdx].startY
+
+  let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+  let txtWidth = txtMeasure.width
+  let txtHeight = gMeme.lines[gMeme.selectedLineIdx].size
+
+  gCtx.clearRect(x - 5, y - txtHeight, txtWidth + 10, txtHeight + 10)
+}
+
+function changeFont(value) {
+  gMeme.lines[gMeme.selectedLineIdx].font = value
+
+  clearFrame()
+  renderMeme()
+  console.log(value)
 }

@@ -16,7 +16,6 @@ function renderMeme() {
   elCanvasContainer.classList.remove('hidden')
 
   const { selectedImgId, lines } = getMeme()
-  //   const { txt } = lines[0]
 
   let selectedImg = gImgs.find((img) => img.id === selectedImgId)
 
@@ -51,7 +50,7 @@ function renderGallery() {
 function renderTextLines() {
   for (let i = 0; i < gMeme.lines.length; i++) {
     let txt = gMeme.lines[i].txt
-    drawText(txt, gMeme.lines[i].startX, i)
+    drawText(txt, i)
   }
   //   drawFrame(txt, startX, startY)
 }
@@ -93,6 +92,7 @@ function addLine() {
   gMeme.lines.push({
     txt: 'Add Text Here',
     size: 30,
+    font: gMeme.lines[gMeme.selectedLineIdx].font,
     color: 'black',
     startY: gStartY + 50,
     startX: 20,
@@ -146,4 +146,8 @@ function onMouseClick(ev) {
   renderMeme()
 
   console.log(clickedLineIdx)
+}
+
+function onChangeFont(value) {
+  changeFont(value)
 }

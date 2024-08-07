@@ -27,7 +27,7 @@
       </section>
 
       <div class="editor-container hidden">
-        <div class="canvas-container ">
+        <div class="canvas-container">
           <canvas width="400" height="400" onclick="onMouseClick(event)">
           </canvas>
         </div>
@@ -59,11 +59,11 @@
               <button onclick="alighText(right)">right</button>
             </div>
             <div class="design-text">
-              <select>
-                <option value="arial">Arial</option>
-                <option value="times-new-roman">Times new roman</option>
-                <option value="helvetica">Helvetica</option>
-                <option value="david">David</option>
+              <select onchange="onChangeFont(value)">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
               </select>
               <label for="txtColor"></label>
               <input
@@ -76,10 +76,8 @@
           </div>
 
           <a href="#" onclick="downloadMeme(this)" download>Download</a>
-
         </section>
       </div>
-
     </main>
 
     <footer>
