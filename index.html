@@ -4,59 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+
     <title>Meme-Generator</title>
   </head>
 
   <body onload="onInit()" class="main-container">
     <header>
-      <logo>MEMEGEN</logo>
+      <logo class="logo">memegen</logo>
       <nav>
         <span>Gallery</span>
+        <span>|</span>
         <span>About</span>
       </nav>
     </header>
-    <main>
+    <main class="background">
+      <div class="search-keyword">
+        <input type="text" placeholder="Enter Search keywords" />
+      </div>
       <section class="gallery">
-        <h2>Select an image</h2>
-
-        <div class="img-container"></div>
+        <div class="container"><div class="img-container"></div></div>
       </section>
 
-      <div class="canvas-container hidden">
-        <canvas width="400" height="400" onclick="onMouseClick(event)">
-        </canvas>
+      <div class="editor-container hidden">
+        <div class="canvas-container ">
+          <canvas width="400" height="400" onclick="onMouseClick(event)">
+          </canvas>
+        </div>
+
+        <section class="meme-editor">
+          <div class="handle-line-container">
+            <label for="text"></label>
+            <input
+              id="text"
+              oninput="onSetLine(this.value)"
+              class="line-text"
+              type="text"
+              placeholder="Add Text Here"
+            />
+
+            <div class="handle-line">
+              <button onclick="switchLine()">Switch line</button>
+              <button onclick="addLine()">Add line</button>
+              <button onclick="deleteLine()">Delete line</button>
+            </div>
+          </div>
+
+          <div class="edit-font">
+            <div class="text-buttons">
+              <button onclick="increaseFont()">A+</button>
+              <button onclick="decreaseFont()">A-</button>
+              <button onclick="alignText(left)">left</button>
+              <button onclick="alignText(center)">center</button>
+              <button onclick="alighText(right)">right</button>
+            </div>
+            <div class="design-text">
+              <select>
+                <option value="arial">Arial</option>
+                <option value="times-new-roman">Times new roman</option>
+                <option value="helvetica">Helvetica</option>
+                <option value="david">David</option>
+              </select>
+              <label for="txtColor"></label>
+              <input
+                type="color"
+                id="txtColor"
+                class="text-color"
+                onchange="onChangeColor(this.value)"
+              />
+            </div>
+          </div>
+
+          <a href="#" onclick="downloadMeme(this)" download>Download</a>
+
+        </section>
       </div>
 
-      <section class="meme-editor">
-        <label for="text">Add text</label>
-        <input
-          id="text"
-          oninput="onSetLine(this.value)"
-          class="line-text"
-          type="text"
-          placeholder="Add Text Here"
-        />
-
-        <label for="txtColor">Set text color</label>
-        <input
-          type="color"
-          id="txtColor"
-          class="text-color"
-          onchange="onChangeColor(this.value)"
-        />
-
-        <button onclick="increaseFont()">A +</button>
-        <button onclick="decreaseFont()">A -</button>
-        <button onclick="addLine()">Add line</button>
-        <button onclick="switchLine()">Switch line</button>
-      </section>
-
-      <a href="#" onclick="downloadMeme(this)" download>Download</a>
     </main>
 
     <footer>
       <span>MEMEGEN</span>
-      <span> rights reserved</span>
+      <span> Odeya Chicheportiche</span>
     </footer>
 
     <script src="js/memeService.js"></script>

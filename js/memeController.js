@@ -12,7 +12,7 @@ function onInit() {
 }
 
 function renderMeme() {
-  const elCanvasContainer = document.querySelector('.canvas-container')
+  const elCanvasContainer = document.querySelector('.editor-container')
   elCanvasContainer.classList.remove('hidden')
 
   const { selectedImgId, lines } = getMeme()

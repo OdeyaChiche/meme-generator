@@ -6,38 +6,137 @@ body {
   text-align: center;
 }
 
-.main-container{
+header {
+  height: 70px;
+  background-color: RGBA(255, 127, 0, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.5625rem;
+}
+
+nav {
+  display: flex;
+  font-size: 1.187rem;
+  margin-inline-end: 60px;
+  gap: 10px;
+}
+
+.logo {
+  margin: 0 50px;
+  font-family: changeOne-regular;
+}
+
+.main-container {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
+.search-keyword {
+  padding: 10px;
+}
+
 img {
-  width: 200px;
+  width: 100%;
   cursor: pointer;
 }
 
+.background {
+  padding: 10px;
+  background-color: rgb(215, 212, 212);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .img-container {
+  width: 90%;
   display: grid;
-  grid-auto-flow: column;
-  justify-content: space-evenly;
+  grid-template-columns: repeat(6, minmax(150px, 80vw));
   gap: 10px;
 }
 
-.canvas-container {
-  padding: 20px;
-  width: 450px;
-  border: 1px solid #636365;
+.editor-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
   margin: auto;
-  background-color: #29278f;
+  padding: 0 20px;
+  gap: 20px;
 }
 
-canvas {
-  display: block;
-  margin: 0 auto;
-  border: 1px solid #000;
+.canvas-container {
+  /* padding: 10px 40px; */
+  margin: auto;
 }
 
-.hidden{
-    display: none;
+.meme-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.handle-line-container {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 20px;
+  gap: 10px;
+}
+
+.line-text {
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.handle-line {
+  display: flex;
+  margin: auto;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 10px;
+}
+
+.edit-font {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 20px;
+  gap: 10px;
+}
+
+.text-buttons {
+  display: flex;
+  margin: auto;
+  gap: 10px;
+}
+
+.design-text {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  gap: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: RGBA(255, 127, 0, 1);
+  height: 60px;
+  font-family: changeOne-regular;
+  color: #ffffff;
+  gap: 10px;
 }

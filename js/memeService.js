@@ -3,6 +3,23 @@
 let gImgs = [
   { id: 1, url: 'img/meme-imgs (square)/1.jpg', keywords: ['funny'] },
   { id: 2, url: 'img/meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
+  { id: 3, url: 'img/meme-imgs (square)/3.jpg', keywords: ['cute', 'dog'] },
+  { id: 4, url: 'img/meme-imgs (square)/4.jpg', keywords: ['cute', 'dog'] },
+  { id: 5, url: 'img/meme-imgs (square)/5.jpg', keywords: ['cute', 'dog'] },
+  { id: 6, url: 'img/meme-imgs (square)/6.jpg', keywords: ['cute', 'dog'] },
+  { id: 7, url: 'img/meme-imgs (square)/7.jpg', keywords: ['cute', 'dog'] },
+  { id: 8, url: 'img/meme-imgs (square)/8.jpg', keywords: ['cute', 'dog'] },
+  { id: 9, url: 'img/meme-imgs (square)/9.jpg', keywords: ['cute', 'dog'] },
+  { id: 10, url: 'img/meme-imgs (square)/10.jpg', keywords: ['cute', 'dog'] },
+  { id: 11, url: 'img/meme-imgs (square)/11.jpg', keywords: ['cute', 'dog'] },
+  { id: 12, url: 'img/meme-imgs (square)/12.jpg', keywords: ['cute', 'dog'] },
+  { id: 13, url: 'img/meme-imgs (square)/13.jpg', keywords: ['cute', 'dog'] },
+  { id: 14, url: 'img/meme-imgs (square)/14.jpg', keywords: ['cute', 'dog'] },
+  { id: 15, url: 'img/meme-imgs (square)/15.jpg', keywords: ['cute', 'dog'] },
+  { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['cute', 'dog'] },
+  { id: 17, url: 'img/meme-imgs (square)/17.jpg', keywords: ['cute', 'dog'] },
+  { id: 18, url: 'img/meme-imgs (square)/18.jpg', keywords: ['cute', 'dog'] },
+
 ]
 let gMeme = {
   selectedImgId: 2,
@@ -25,10 +42,14 @@ function getMeme() {
 
 function setImg(imgId) {
   let elGallery = document.querySelector('.gallery')
+  let elKeywordSearch= document.querySelector('.search-keyword')
   gMeme.selectedImgId = imgId
 
   renderMeme()
   elGallery.classList.add('hidden')
+  elKeywordSearch.classList.add('hidden')
+
+  console.log(elKeywordSearch);
 }
 
 function setLineTxt(txt) {
