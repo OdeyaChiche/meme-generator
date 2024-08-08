@@ -35,7 +35,15 @@ nav {
 }
 
 .search-keyword {
+  display: flex;
+  justify-content: center;
+align-items: center;
   padding: 10px;
+  gap: 20px;
+}
+
+.search-keyword button{
+  padding: 5px 10px;
 }
 
 img {
@@ -101,6 +109,11 @@ button {
   padding: 10px 10px;
 }
 
+.flexible{
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
 .edit-font {
   display: flex;
   flex-direction: column;
@@ -149,6 +162,13 @@ footer {
 
 .pointer {
   cursor: pointer;
+}
+
+.words-map{
+  display: inline;
+  background-color: orange;
+  font-size: 16px;
+
 }
 
 @media only screen and (max-width: 750px) {

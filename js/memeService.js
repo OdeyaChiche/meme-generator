@@ -76,7 +76,15 @@ let gMeme = {
     },
   ],
 }
-let gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
+
+let gKeyword = ['funny', 'cat', 'dog', 'baby', 'president']
+let gKeywordSearchCountMap = {
+  ' funny': 20,
+  ' cat': 16,
+  ' dog': 26,
+  ' baby': 16,
+  ' president': 14,
+}
 let gDirection = 'left'
 
 function getMeme() {
@@ -87,7 +95,6 @@ function setImg(imgId) {
   let elGallery = document.querySelector('.gallery')
   let elKeywordSearch = document.querySelector('.search-keyword')
   gMeme.selectedImgId = imgId
-
 
   renderMeme()
   elGallery.classList.add('hidden')
@@ -103,8 +110,7 @@ function setLineTxt(txt) {
 }
 
 function drawText(text, i) {
-
-  gCtx.setLineDash([]);
+  gCtx.setLineDash([])
   let size = gMeme.lines[i].size
   let y = gMeme.lines[i].startY
   let x = gMeme.lines[i].startX
@@ -141,7 +147,7 @@ function calculateSize() {
 function drawFrame() {
   let { x, y, txtWidth, txtHeight } = calculateSize()
 
-  gCtx.setLineDash([5, 2]); 
+  gCtx.setLineDash([5, 2])
 
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 2
@@ -164,5 +170,17 @@ function changeFont(value) {
 
   clearFrame()
   renderMeme()
-  console.log(value)
+}
+
+function countKeywords(event) {
+  let clickedWord = event.textContent
+
+  if (gKeywordSearchCountMap[clickedWord] !== undefined) {
+    gKeywordSearchCountMap[clickedWord] += 2
+  } else {
+    gKeywordSearchCountMap[clickedWord] = 2
+  }
+
+  event.style.fontSize = `${gKeywordSearchCountMap[clickedWord]}px`
+  console.log(gKeywordSearchCountMap)
 }

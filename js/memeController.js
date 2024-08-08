@@ -8,6 +8,7 @@ function onInit() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 
+  renderWordsMap()
   renderGallery(gImgs)
 }
 
@@ -20,7 +21,6 @@ function renderGallery(imgs) {
     strHtml += `<img src='${imgs[i].url}' class="${count}" onclick="onImgSelect(${imgs[i].id})" />`
     count++
   }
-
   elGallery.innerHTML = strHtml
 }
 
@@ -48,6 +48,23 @@ function renderTextLines() {
     drawText(txt, i)
   }
 }
+
+function renderWordsMap() {
+  let elWordsKeyMap = document.querySelector('.words-map')
+  let strHtml = ''
+
+  for (let i = 0; i < gKeyword.length; i++) {
+    strHtml += `<span onclick = "countKeywords(this)" class="${gKeyword[i]} pointer"> ${gKeyword[i]}</span>`
+  }
+
+  elWordsKeyMap.innerHTML = strHtml
+
+  // renderWordSize()
+}
+
+// function renderWordSize() {
+
+// }
 
 function showGallery() {
   let elGallery = document.querySelector('.gallery')
@@ -249,6 +266,10 @@ function filterGallery(value) {
 
 function clearFilter() {
   renderGallery(gImgs)
+}
+
+function onCountKeywords(value) {
+  countKeywords(value)
 }
 
 // function onSaveMeme() {
