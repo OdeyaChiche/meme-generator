@@ -78,6 +78,7 @@ let gMeme = {
 }
 let gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 let gDirection = 'left'
+
 function getMeme() {
   return gMeme
 }
@@ -86,6 +87,7 @@ function setImg(imgId) {
   let elGallery = document.querySelector('.gallery')
   let elKeywordSearch = document.querySelector('.search-keyword')
   gMeme.selectedImgId = imgId
+
 
   renderMeme()
   elGallery.classList.add('hidden')

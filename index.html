@@ -13,16 +13,31 @@
     <header>
       <logo class="logo">MemeIt</logo>
       <nav>
-        <span class="pointer">Gallery</span>
+        <span onclick="showGallery()" class="pointer">Gallery</span>
+        <span>|</span>
+        <span class="pointer">Saved Memes</span>
         <span>|</span>
         <span class="pointer">About</span>
       </nav>
     </header>
     <main class="background">
       <div class="search-keyword">
-        <input type="text" placeholder="Enter Search keywords" />
-        <button onclick="selectRandomMeme()" class="pointer">I'm flexible</button>
-
+        <input class="keywords" list="keywords" onchange="filterGallery(this.value)" placeholder="Enter Search keywords" />
+        <datalist id="keywords">
+          <option value="funny"></option>
+          <option value="cute"></option>
+          <option value="dog"></option>
+          <option value="cat"></option>
+          <option value="man"></option>
+          <option value="president"></option>
+          <option value="sleep"></option>
+          <option value="serious"></option>
+          <option value="determined"></option>
+        </datalist>
+        <button onclick="clearFilter()">Clear</button>
+        <button onclick="selectRandomMeme()" class="pointer">
+          I'm flexible
+        </button>
       </div>
 
       <section class="gallery">
@@ -47,23 +62,83 @@
             />
 
             <div class="handle-line">
-              <button onclick="switchLine()" class="pointer"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="addLine()" class="pointer"><img src="icons/add.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="onDeleteLine()" class="pointer"> <img src="icons/trash.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="switchLine()" class="pointer">
+                <img
+                  src="icons/up-and-down-opposite-double-arrows-side-by-side.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick="addLine()" class="pointer">
+                <img src="icons/add.png" alt="Icon" width="25" height="20" />
+              </button>
+              <button onclick="onDeleteLine()" class="pointer">
+                <img src="icons/trash.png" alt="Icon" width="25" height="20" />
+              </button>
             </div>
           </div>
 
           <div class="edit-font">
             <div class="text-buttons">
-              <button onclick="increaseFont()" class="pointer"><img src="icons/increase font - icon.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="decreaseFont()" class="pointer"><img src="icons/decrease font - icon.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="alignText('left')" class="pointer"><img src="icons/align-to-left.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="alignText('center')" class="pointer"><img src="icons/center-text-alignment.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="alignText('right')" class="pointer"><img src="icons/align-to-right.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="increaseFont()" class="pointer">
+                <img
+                  src="icons/increase font - icon.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick="decreaseFont()" class="pointer">
+                <img
+                  src="icons/decrease font - icon.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick="alignText('left')" class="pointer">
+                <img
+                  src="icons/align-to-left.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick="alignText('center')" class="pointer">
+                <img
+                  src="icons/center-text-alignment.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick="alignText('right')" class="pointer">
+                <img
+                  src="icons/align-to-right.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
             </div>
             <div class="design-text">
-              <button onclick="moveWithMouse(0,-5)" class="pointer"><img src="icons/arrow-up.png" alt="Icon" width="25" height="20"></button>
-              <button onclick=" moveWithMouse(0,5)" class="pointer"><img src="icons/arrow-down1.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="moveWithMouse(0,-5)" class="pointer">
+                <img
+                  src="icons/arrow-up.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
+              <button onclick=" moveWithMouse(0,5)" class="pointer">
+                <img
+                  src="icons/arrow-down1.png"
+                  alt="Icon"
+                  width="25"
+                  height="20"
+                />
+              </button>
               <select onchange="onChangeFont(value)" class="pointer">
                 <option value="Arial">Arial</option>
                 <option value="Georgia">Georgia</option>
@@ -75,12 +150,17 @@
                 type="color"
                 id="txtColor"
                 class="text-color pointer"
-                onchange="onChangeColor(this.value)"
+                oninput="onChangeColor(this.value)"
               />
             </div>
           </div>
 
-          <a href="#" onclick="downloadMeme(this)" download class="pointer">Download</a>
+          <div class="download-and-save">
+            <a href="#" onclick="downloadMeme(this)" download class="pointer"
+              >Download</a
+            >
+            <!-- <button onclick="onSaveMeme()" class="pointer"><img src="icons/save.png" alt="Icon" width="25" height="20"></button> -->
+          </div>
         </section>
       </div>
     </main>

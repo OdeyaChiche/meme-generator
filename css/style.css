@@ -141,6 +141,12 @@ footer {
   gap: 10px;
 }
 
+.download-and-save{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
 .pointer {
   cursor: pointer;
 }

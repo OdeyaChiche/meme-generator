@@ -8,7 +8,20 @@ function onInit() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 
-  renderGallery()
+  renderGallery(gImgs)
+}
+
+function renderGallery(imgs) {
+  const elGallery = document.querySelector('.img-container')
+  let count = 1
+  let strHtml = ''
+
+  for (let i = 0; i < imgs.length; i++) {
+    strHtml += `<img src='${imgs[i].url}' class="${count}" onclick="onImgSelect(${imgs[i].id})" />`
+    count++
+  }
+
+  elGallery.innerHTML = strHtml
 }
 
 function renderMeme() {
@@ -16,6 +29,7 @@ function renderMeme() {
   elCanvasContainer.classList.remove('hidden')
 
   const { selectedImgId, lines } = getMeme()
+  console.log(selectedImgId)
 
   let selectedImg = gImgs.find((img) => img.id === selectedImgId)
 
@@ -28,24 +42,27 @@ function renderMeme() {
   drawFrame()
 }
 
-function renderGallery() {
-  const elGallery = document.querySelector('.img-container')
-  let count = 1
-  let strHtml = ''
-
-  for (let i = 0; i < gImgs.length; i++) {
-    strHtml += `<img src='${gImgs[i].url}' class="${count}" onclick="onImgSelect(${count})" />`
-    count++
-  }
-
-  elGallery.innerHTML = strHtml
-}
-
 function renderTextLines() {
   for (let i = 0; i < gMeme.lines.length; i++) {
     let txt = gMeme.lines[i].txt
     drawText(txt, i)
   }
+}
+
+function showGallery() {
+  let elGallery = document.querySelector('.gallery')
+  let elKeywordSearch = document.querySelector('.search-keyword')
+
+  elGallery.classList.remove('hidden')
+  elKeywordSearch.classList.remove('hidden')
+
+  const elCanvasContainer = document.querySelector('.editor-container')
+  elCanvasContainer.classList.add('hidden')
+
+  onInit()
+
+  let elWordSearch = document.querySelector('.keywords')
+  elWordSearch.value = ''
 }
 
 function onImgSelect(imgId) {
@@ -54,7 +71,6 @@ function onImgSelect(imgId) {
 
 function onSetLine(txt) {
   setLineTxt(txt)
-
 }
 
 function downloadMeme(elLink) {
@@ -212,13 +228,32 @@ function moveWithKeys() {
   })
 }
 
-function moveWithMouse(dx,dy){
-  moveLine(dx,dy)
+function moveWithMouse(dx, dy) {
+  moveLine(dx, dy)
 }
 
-function selectRandomMeme(){
-let randomId= getRandomIntInclusive(0, gImgs.length-1)
+function selectRandomMeme() {
+  let randomId = getRandomIntInclusive(0, gImgs.length - 1)
 
-console.log(randomId);
-  onImgSelect(randomId) 
+  console.log(randomId)
+  onImgSelect(randomId)
 }
+
+function filterGallery(value) {
+  let filteredGallery = gImgs.filter((img) =>
+    img.keywords.find((word) => word === value)
+  )
+
+  renderGallery(filteredGallery)
+}
+
+function clearFilter() {
+  renderGallery(gImgs)
+}
+
+// function onSaveMeme() {
+//   const dataURL = gCtx.toDataURL('image/png')
+//   localStorage.setItem('savedMeme', dataURL)
+
+//   alert('saved')
+// }
