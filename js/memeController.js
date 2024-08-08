@@ -38,12 +38,6 @@ function renderGallery() {
     count++
   }
 
-  //   let galleryHtml = gImgs.map((img) => {
-  //     return `<img src=${img.url} class="${count}" onclick="onSelectImg(${count})" />`
-  //     count++
-  //     console.log(count);
-  //   })
-
   elGallery.innerHTML = strHtml
 }
 

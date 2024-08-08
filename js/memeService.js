@@ -1,24 +1,76 @@
 'use strict'
 
 let gImgs = [
-  { id: 1, url: 'img/meme-imgs (square)/1.jpg', keywords: ['funny'] },
-  { id: 2, url: 'img/meme-imgs (square)/2.jpg', keywords: ['cute', 'dog'] },
-  { id: 3, url: 'img/meme-imgs (square)/3.jpg', keywords: ['cute', 'dog'] },
-  { id: 4, url: 'img/meme-imgs (square)/4.jpg', keywords: ['cute', 'dog'] },
-  { id: 5, url: 'img/meme-imgs (square)/5.jpg', keywords: ['cute', 'dog'] },
-  { id: 6, url: 'img/meme-imgs (square)/6.jpg', keywords: ['cute', 'dog'] },
-  { id: 7, url: 'img/meme-imgs (square)/7.jpg', keywords: ['cute', 'dog'] },
-  { id: 8, url: 'img/meme-imgs (square)/8.jpg', keywords: ['cute', 'dog'] },
-  { id: 9, url: 'img/meme-imgs (square)/9.jpg', keywords: ['cute', 'dog'] },
-  { id: 10, url: 'img/meme-imgs (square)/10.jpg', keywords: ['cute', 'dog'] },
-  { id: 11, url: 'img/meme-imgs (square)/11.jpg', keywords: ['cute', 'dog'] },
-  { id: 12, url: 'img/meme-imgs (square)/12.jpg', keywords: ['cute', 'dog'] },
-  { id: 13, url: 'img/meme-imgs (square)/13.jpg', keywords: ['cute', 'dog'] },
-  { id: 14, url: 'img/meme-imgs (square)/14.jpg', keywords: ['cute', 'dog'] },
-  { id: 15, url: 'img/meme-imgs (square)/15.jpg', keywords: ['cute', 'dog'] },
-  { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['cute', 'dog'] },
-  { id: 17, url: 'img/meme-imgs (square)/17.jpg', keywords: ['cute', 'dog'] },
-  { id: 18, url: 'img/meme-imgs (square)/18.jpg', keywords: ['cute', 'dog'] },
+  {
+    id: 1,
+    url: 'img/meme-imgs (square)/1.jpg',
+    keywords: ['funny', 'determined', 'president', 'man'],
+  },
+  {
+    id: 2,
+    url: 'img/meme-imgs (square)/2.jpg',
+    keywords: ['cute', 'dog', 'sleep'],
+  },
+  {
+    id: 3,
+    url: 'img/meme-imgs (square)/3.jpg',
+    keywords: ['cute', 'dog', 'sleep'],
+  },
+  {
+    id: 4,
+    url: 'img/meme-imgs (square)/4.jpg',
+    keywords: ['cute', 'cat', 'sleep'],
+  },
+  {
+    id: 5,
+    url: 'img/meme-imgs (square)/5.jpg',
+    keywords: ['cute', 'baby', 'determined'],
+  },
+  { id: 6, url: 'img/meme-imgs (square)/6.jpg', keywords: ['man', 'funny'] },
+  {
+    id: 7,
+    url: 'img/meme-imgs (square)/7.jpg',
+    keywords: ['cute', 'baby', 'funny', 'shock'],
+  },
+  { id: 8, url: 'img/meme-imgs (square)/8.jpg', keywords: ['funny', 'man'] },
+  {
+    id: 9,
+    url: 'img/meme-imgs (square)/9.jpg',
+    keywords: ['cute', 'baby', 'mischievous'],
+  },
+  {
+    id: 10,
+    url: 'img/meme-imgs (square)/10.jpg',
+    keywords: ['funny', 'president', 'man'],
+  },
+  { id: 11, url: 'img/meme-imgs (square)/11.jpg', keywords: ['strong', 'man'] },
+  { id: 12, url: 'img/meme-imgs (square)/12.jpg', keywords: ['smart', 'man'] },
+  {
+    id: 13,
+    url: 'img/meme-imgs (square)/13.jpg',
+    keywords: ['nice', 'drink', 'man'],
+  },
+  {
+    id: 14,
+    url: 'img/meme-imgs (square)/14.jpg',
+    keywords: ['serious', 'smart', 'man'],
+  },
+  {
+    id: 15,
+    url: 'img/meme-imgs (square)/15.jpg',
+    keywords: ['funny', 'mischievous', 'man'],
+  },
+  { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['funny', 'man'] },
+  {
+    id: 17,
+    url: 'img/meme-imgs (square)/17.jpg',
+    keywords: ['serious', 'president', 'man'],
+  },
+  {
+    id: 18,
+    url: 'img/meme-imgs (square)/18.jpg',
+    keywords: ['disney', 'smart', 'brave', 'man'],
+  },
 ]
 let gMeme = {
   selectedImgId: 2,
@@ -78,11 +130,8 @@ function changeTextColor(value) {
 }
 
 function calculateSize() {
-  let x = gMeme.lines[gMeme.selectedLineIdx].startX
-  let y = gMeme.lines[gMeme.selectedLineIdx].startY
-
   let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-  
+
   let variables = {
     x: gMeme.lines[gMeme.selectedLineIdx].startX,
     y: gMeme.lines[gMeme.selectedLineIdx].startY,
