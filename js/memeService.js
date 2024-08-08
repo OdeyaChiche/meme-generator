@@ -61,16 +61,6 @@ let gImgs = [
     keywords: ['funny', 'mischievous', 'man'],
   },
   { id: 16, url: 'img/meme-imgs (square)/16.jpg', keywords: ['funny', 'man'] },
-  {
-    id: 17,
-    url: 'img/meme-imgs (square)/17.jpg',
-    keywords: ['serious', 'president', 'man'],
-  },
-  {
-    id: 18,
-    url: 'img/meme-imgs (square)/18.jpg',
-    keywords: ['disney', 'smart', 'brave', 'man'],
-  },
 ]
 let gMeme = {
   selectedImgId: 2,
