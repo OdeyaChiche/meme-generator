@@ -11,7 +11,7 @@
 
   <body onload="onInit()" class="main-container">
     <header>
-      <logo class="logo">memegen</logo>
+      <logo class="logo">MemeIt</logo>
       <nav>
         <span>Gallery</span>
         <span>|</span>
@@ -44,21 +44,23 @@
             />
 
             <div class="handle-line">
-              <button onclick="switchLine()">Switch line</button>
-              <button onclick="addLine()">Add line</button>
-              <button onclick="deleteLine()">Delete line</button>
+              <button onclick="switchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="addLine()"><img src="icons/add.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="onDeleteLine()"> <img src="icons/trash.png" alt="Icon" width="25" height="20"></button>
             </div>
           </div>
 
           <div class="edit-font">
             <div class="text-buttons">
-              <button onclick="increaseFont()">A+</button>
-              <button onclick="decreaseFont()">A-</button>
-              <button onclick="alignText(left)">left</button>
-              <button onclick="alignText(center)">center</button>
-              <button onclick="alighText(right)">right</button>
+              <button onclick="increaseFont()"><img src="icons/increase font - icon.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="decreaseFont()"><img src="icons/decrease font - icon.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="alignText('left')"><img src="icons/align-to-left.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="alignText('center')"><img src="icons/center-text-alignment.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="alignText('right')"><img src="icons/align-to-right.png" alt="Icon" width="25" height="20"></button>
             </div>
             <div class="design-text">
+              <button onclick="moveLine(0,-5)"><img src="icons/arrow-up.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="moveLine(0,5)"><img src="icons/arrow-down1.png" alt="Icon" width="25" height="20"></button>
               <select onchange="onChangeFont(value)">
                 <option value="Arial">Arial</option>
                 <option value="Georgia">Georgia</option>
@@ -81,7 +83,7 @@
     </main>
 
     <footer>
-      <span>MEMEGEN</span>
+      <span>MemeIt</span>
       <span> Odeya Chicheportiche</span>
     </footer>
 
