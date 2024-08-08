@@ -79,11 +79,11 @@ let gMeme = {
 
 let gKeyword = ['funny', 'cat', 'dog', 'baby', 'president']
 let gKeywordSearchCountMap = {
-  ' funny': 20,
+  ' funny': 16,
   ' cat': 16,
-  ' dog': 26,
+  ' dog': 16,
   ' baby': 16,
-  ' president': 14,
+  ' president': 16,
 }
 let gDirection = 'left'
 
@@ -94,11 +94,14 @@ function getMeme() {
 function setImg(imgId) {
   let elGallery = document.querySelector('.gallery')
   let elKeywordSearch = document.querySelector('.search-keyword')
+  let elFlexibleButton=  document.querySelector('.flexible')
   gMeme.selectedImgId = imgId
 
   renderMeme()
   elGallery.classList.add('hidden')
   elKeywordSearch.classList.add('hidden')
+  elFlexibleButton.classList.add('hidden')
+  
 
   console.log(elKeywordSearch)
 }
@@ -183,4 +186,8 @@ function countKeywords(event) {
 
   event.style.fontSize = `${gKeywordSearchCountMap[clickedWord]}px`
   console.log(gKeywordSearchCountMap)
+
+  console.log(clickedWord);
+
+  // filterGallery(clickedWord)
 }

@@ -16,33 +16,33 @@
         <span onclick="showGallery()" class="pointer">Gallery</span>
         <span>|</span>
         <span class="pointer">Saved Memes</span>
-        <span>|</span>
-        <span class="pointer">About</span>
       </nav>
     </header>
 
+    <div class="search-keyword">
+      <input
+        class="keywords"
+        list="keywords"
+        onchange="filterGallery(this.value)"
+        placeholder="Enter Search keywords"
+      />
+      <datalist id="keywords">
+        <option value="funny"></option>
+        <option value="cute"></option>
+        <option value="dog"></option>
+        <option value="cat"></option>
+        <option value="man"></option>
+        <option value="president"></option>
+      </datalist>
+      <button class="clear pointer" onclick="clearFilter()">Clear</button>
+      <div class="words-map"></div>
+    </div>
+
+    <button onclick="selectRandomMeme()" class="flexible clear pointer">
+      I'm flexible
+    </button>
+
     <main class="background">
-      <div class="search-keyword">
-        <input
-          class="keywords"
-          list="keywords"
-          onchange="filterGallery(this.value)"
-          placeholder="Enter Search keywords"
-        />
-        <datalist id="keywords">
-          <option value="funny"></option>
-          <option value="cute"></option>
-          <option value="dog"></option>
-          <option value="cat"></option>
-          <option value="man"></option>
-          <option value="president"></option>
-        </datalist>
-        <button onclick="clearFilter()">Clear</button>
-        <div class="words-map"></div>
-      </div>
-
-      <button onclick="selectRandomMeme()" class="flexible pointer">I'm flexible</button>
-
       <section class="gallery">
         <div class="container"><div class="img-container"></div></div>
       </section>

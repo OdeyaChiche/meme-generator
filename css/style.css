@@ -34,8 +34,13 @@ nav {
   text-align: center;
 }
 
+.keywords{
+  border: none;
+}
+
 .search-keyword {
   display: flex;
+ 
   justify-content: center;
 align-items: center;
   padding: 10px;
@@ -134,6 +139,11 @@ button {
   gap: 5px;
 }
 
+input[list]{
+  border: none;
+  border-bottom: 2px solid #000
+}
+
 input[type='color'] {
   height: auto;
 }
@@ -166,9 +176,14 @@ footer {
 
 .words-map{
   display: inline;
-  background-color: orange;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 
+}
+
+.clear{
+  background-color: white;
+  border: none;
 }
 
 @media only screen and (max-width: 750px) {
@@ -176,8 +191,16 @@ footer {
     flex-direction: column;
   }
 
+  .search-keyword{
+    flex-direction: column;
+  }
+
   .img-container{
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clear{
+    display: none;
   }
 
   .meme-editor{
