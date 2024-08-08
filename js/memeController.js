@@ -52,6 +52,7 @@ function renderTextLines() {
     let txt = gMeme.lines[i].txt
     drawText(txt, i)
   }
+
   //   drawFrame(txt, startX, startY)
 }
 

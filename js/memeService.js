@@ -77,13 +77,26 @@ function changeTextColor(value) {
   renderMeme()
 }
 
-function drawFrame() {
+function calculateSize() {
   let x = gMeme.lines[gMeme.selectedLineIdx].startX
   let y = gMeme.lines[gMeme.selectedLineIdx].startY
 
   let txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-  let txtWidth = txtMeasure.width
-  let txtHeight = gMeme.lines[gMeme.selectedLineIdx].size
+  
+  let variables = {
+    x: gMeme.lines[gMeme.selectedLineIdx].startX,
+    y: gMeme.lines[gMeme.selectedLineIdx].startY,
+
+    txtMeasure: gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt),
+    txtWidth: txtMeasure.width,
+    txtHeight: gMeme.lines[gMeme.selectedLineIdx].size,
+  }
+
+  return variables
+}
+
+function drawFrame() {
+  let { x, y, txtWidth, txtHeight } = calculateSize()
 
   gCtx.strokeStyle = 'black'
   gCtx.lineWidth = 4
