@@ -21,7 +21,10 @@
     <main class="background">
       <div class="search-keyword">
         <input type="text" placeholder="Enter Search keywords" />
+        <button onclick="selectRandomMeme()" class="pointer">I'm flexible</button>
+
       </div>
+
       <section class="gallery">
         <div class="container"><div class="img-container"></div></div>
       </section>
@@ -59,8 +62,8 @@
               <button onclick="alignText('right')" class="pointer"><img src="icons/align-to-right.png" alt="Icon" width="25" height="20"></button>
             </div>
             <div class="design-text">
-              <button onclick="moveLine(0,-5)" class="pointer"><img src="icons/arrow-up.png" alt="Icon" width="25" height="20"></button>
-              <button onclick="moveLine(0,5)" class="pointer"><img src="icons/arrow-down1.png" alt="Icon" width="25" height="20"></button>
+              <button onclick="moveWithMouse(0,-5)" class="pointer"><img src="icons/arrow-up.png" alt="Icon" width="25" height="20"></button>
+              <button onclick=" moveWithMouse(0,5)" class="pointer"><img src="icons/arrow-down1.png" alt="Icon" width="25" height="20"></button>
               <select onchange="onChangeFont(value)" class="pointer">
                 <option value="Arial">Arial</option>
                 <option value="Georgia">Georgia</option>
@@ -87,6 +90,7 @@
       <span> Odeya Chicheportiche</span>
     </footer>
 
+    <script src="js/utils.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/storage.service.js"></script>

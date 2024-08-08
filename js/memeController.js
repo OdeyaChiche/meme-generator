@@ -46,8 +46,6 @@ function renderTextLines() {
     let txt = gMeme.lines[i].txt
     drawText(txt, i)
   }
-
-  //   drawFrame(txt, startX, startY)
 }
 
 function onImgSelect(imgId) {
@@ -56,6 +54,7 @@ function onImgSelect(imgId) {
 
 function onSetLine(txt) {
   setLineTxt(txt)
+
 }
 
 function downloadMeme(elLink) {
@@ -88,7 +87,7 @@ function addLine() {
     txt: 'Add Text Here',
     size: 30,
     font: gMeme.lines[gMeme.selectedLineIdx].font,
-    color: 'black',
+    color: 'white',
     startY: gStartY + 50,
     startX: 20,
   })
@@ -211,4 +210,15 @@ function moveWithKeys() {
         break
     }
   })
+}
+
+function moveWithMouse(dx,dy){
+  moveLine(dx,dy)
+}
+
+function selectRandomMeme(){
+let randomId= getRandomIntInclusive(0, gImgs.length-1)
+
+console.log(randomId);
+  onImgSelect(randomId) 
 }

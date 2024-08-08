@@ -70,7 +70,7 @@ let gMeme = {
       txt: 'Add Text Here',
       size: 30,
       font: 'Arial',
-      color: 'black',
+      color: 'white',
       startY: 50,
       startX: 20,
     },
@@ -101,13 +101,15 @@ function setLineTxt(txt) {
 }
 
 function drawText(text, i) {
+
+  gCtx.setLineDash([]);
   let size = gMeme.lines[i].size
   let y = gMeme.lines[i].startY
   let x = gMeme.lines[i].startX
 
   gCtx.lineWidth = 1
   gCtx.fillStyle = gMeme.lines[i].color
-  gCtx.font = `${size}px ${gMeme.lines[i].font}`
+  gCtx.font = `bold ${size}px ${gMeme.lines[i].font}`
 
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
@@ -137,8 +139,10 @@ function calculateSize() {
 function drawFrame() {
   let { x, y, txtWidth, txtHeight } = calculateSize()
 
+  gCtx.setLineDash([5, 2]); 
+
   gCtx.strokeStyle = 'black'
-  gCtx.lineWidth = 4
+  gCtx.lineWidth = 2
   gCtx.strokeRect(x - 5, y - txtHeight, txtWidth + 10, txtHeight + 10)
 }
 

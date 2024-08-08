@@ -153,4 +153,12 @@ footer {
   .img-container{
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .meme-editor{
+    width: 80vw;
+  }
+
+  button {
+    padding: 20px 10px;
+  }
 }
