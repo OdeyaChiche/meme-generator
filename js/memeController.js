@@ -98,7 +98,7 @@ function addLine() {
     startX: 20,
   })
 
-  gMeme.selectedLineIdx++
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
   renderMeme()
   renderTextLines()
 
@@ -145,9 +145,75 @@ function onMouseClick(ev) {
   gMeme.selectedLineIdx = clickedLineIdx
   renderMeme()
 
+  moveWithKeys()
+
   console.log(clickedLineIdx)
 }
 
 function onChangeFont(value) {
   changeFont(value)
+}
+
+function alignText(direction) {
+  gDirection = direction
+  let txtMeasure
+  let txtWidth
+
+  switch (direction) {
+    case 'left':
+      gMeme.lines[gMeme.selectedLineIdx].startX = 20
+      break
+    case 'center':
+      txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+      txtWidth = txtMeasure.width
+      gMeme.lines[gMeme.selectedLineIdx].startX = 400 / 2 - txtWidth / 2
+      break
+    case 'right':
+      txtMeasure = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+      txtWidth = txtMeasure.width
+      gMeme.lines[gMeme.selectedLineIdx].startX = 400 - txtWidth - 20
+      break
+  }
+  renderMeme()
+}
+
+function onDeleteLine() {
+  if (gMeme.lines.length === 1) {
+    gStartY = 50
+    return
+  }
+
+  let selectedIdx = gMeme.selectedLineIdx
+  let length = gMeme.lines.length - 1
+
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+
+  if (selectedIdx === length) gMeme.selectedLineIdx--
+  renderMeme()
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].startX += dx
+  gMeme.lines[gMeme.selectedLineIdx].startY += dy
+
+  renderMeme()
+}
+
+function moveWithKeys() {
+  window.addEventListener('keydown', function (event) {
+    switch (event.key) {
+      case 'ArrowUp':
+        moveLine(0, -5)
+        break
+      case 'ArrowDown':
+        moveLine(0, 5)
+        break
+      case 'ArrowLeft':
+        moveLine(-5, 0)
+        break
+      case 'ArrowRight':
+        moveLine(5, 0)
+        break
+    }
+  })
 }
