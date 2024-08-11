@@ -3,7 +3,13 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
   text-align: center;
+    background-color: rgb(215, 212, 212);
+
 }
 
 header {
@@ -28,26 +34,32 @@ nav {
   font-family: changeOne-regular;
 }
 
+main{
+  flex: 1;
+  padding-bottom: 70px;
+ 
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.keywords{
+.keywords {
   border: none;
 }
 
 .search-keyword {
   display: flex;
- 
+background-color: #fff;
   justify-content: center;
-align-items: center;
+  align-items: center;
   padding: 10px;
   gap: 20px;
 }
 
-.search-keyword button{
+.search-keyword button {
   padding: 5px 10px;
 }
 
@@ -57,6 +69,7 @@ img {
 }
 
 .background {
+  width: 100%;
   padding: 10px;
   background-color: rgb(215, 212, 212);
 }
@@ -114,7 +127,7 @@ button {
   padding: 10px 10px;
 }
 
-.flexible{
+.flexible {
   padding: 5px 10px;
   margin-bottom: 10px;
 }
@@ -139,9 +152,9 @@ button {
   gap: 5px;
 }
 
-input[list]{
+input[list] {
   border: none;
-  border-bottom: 2px solid #000
+  border-bottom: 2px solid #000;
 }
 
 input[type='color'] {
@@ -153,18 +166,22 @@ input[type='color'] {
 }
 
 footer {
-  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex; 
   flex-direction: column;
   justify-content: center;
   text-align: center;
   background-color: RGBA(255, 127, 0, 1);
-  height: 60px;
   font-family: changeOne-regular;
   color: #ffffff;
-  gap: 10px;
+  gap: 10px;  
 }
 
-.download-and-save{
+.download-and-save {
   display: flex;
   flex-direction: row;
   margin: auto;
@@ -174,14 +191,14 @@ footer {
   cursor: pointer;
 }
 
-.words-map{
-  display: inline;
+.words-map {
+  display: flex;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-
+  gap: 10px;
 }
 
-.clear{
+.clear {
   background-color: white;
   border: none;
 }
@@ -191,19 +208,19 @@ footer {
     flex-direction: column;
   }
 
-  .search-keyword{
+  .search-keyword {
     flex-direction: column;
   }
 
-  .img-container{
+  .img-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .clear{
+  .clear {
     display: none;
   }
 
-  .meme-editor{
+  .meme-editor {
     width: 80vw;
   }
 

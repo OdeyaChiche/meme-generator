@@ -29,7 +29,6 @@ function renderMeme() {
   elCanvasContainer.classList.remove('hidden')
 
   const { selectedImgId, lines } = getMeme()
-  console.log(selectedImgId)
 
   let selectedImg = gImgs.find((img) => img.id === selectedImgId)
 
@@ -54,7 +53,7 @@ function renderWordsMap() {
   let strHtml = ''
 
   for (let i = 0; i < gKeyword.length; i++) {
-    strHtml += `<span onclick = "countKeywords(this)" class="${gKeyword[i]} pointer"> ${gKeyword[i]}</span>`
+    strHtml += `<span onclick = "countKeywords(this)" class="${gKeyword[i]} pointer">${gKeyword[i]}</span>`
   }
 
   elWordsKeyMap.innerHTML = strHtml
@@ -69,9 +68,13 @@ function renderWordsMap() {
 function showGallery() {
   let elGallery = document.querySelector('.gallery')
   let elKeywordSearch = document.querySelector('.search-keyword')
+  let elFlexibleButton=  document.querySelector('.flexible')
+
 
   elGallery.classList.remove('hidden')
   elKeywordSearch.classList.remove('hidden')
+  elFlexibleButton.classList.remove('hidden')
+
 
   const elCanvasContainer = document.querySelector('.editor-container')
   elCanvasContainer.classList.add('hidden')
@@ -173,8 +176,6 @@ function onMouseClick(ev) {
   renderMeme()
 
   moveWithKeys()
-
-  console.log(clickedLineIdx)
 }
 
 function onChangeFont(value) {
